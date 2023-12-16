@@ -4,6 +4,10 @@
 #you will keep some code inside functions which is more often repeated, and call whenever you require
 #Functions will do some work on behalf of us and it will update what happened.
 
+DATE=$(date +%F)
+SCRIPT_NAME=$0
+LOGFILE=/tmp/$SCRIPT_NAME-$DATE.log
+
 USERID=$(id -u)
 
 # This function should validate the previous command and inform user it is success or failure.
