@@ -12,7 +12,7 @@ then
 fi
 
 # it is our responsibility again to check installin is success or not
-yum install mysql -y 
+yum install mysqlll -y 
 
 if [ $> -ne 0 ]
 then
