@@ -4,8 +4,10 @@
 
 USERID=$(id -u)
 
-If [ $USERID -ne 0]
+if [ $USERID -ne 0 ]
 then
     echo "ERROR : Please run this script with root user"
     #not 
 fi
+
+yum install git -y
