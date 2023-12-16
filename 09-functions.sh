@@ -16,11 +16,10 @@ VALIDATE(){
         exit 1
     else    
         echo "$2....... is SUCCESS"
-fi
+    fi
 }
 
 USERID=$(id -u)
-
 
 if [ $USERID -ne 0 ]
 then 
