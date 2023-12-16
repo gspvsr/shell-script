@@ -5,18 +5,18 @@
 #Functions will do some work on behalf of us and it will update what happened.
 
 USERID=$(id -u)
-# This function should validate the previous command and inform user it is success or failure.
 
+# This function should validate the previous command and inform user it is success or failure.
 VALIDATE(){
-#$1 ---> it will receive teh argument1
+#?1 will receive teh argument1
+
 if [ $? -ne 0 ]
 then
-    echo "Installation of mysql is error"
+    echo " $2...... is error"
     exit 1
 else    
-    echo "Installation of mysql is success"
+    echo " $2....... is success"
 fi
-
 }
 
 if [ $USERID -ne 0 ]
