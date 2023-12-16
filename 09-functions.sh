@@ -2,11 +2,12 @@
 
 #Our program goal is to be install
 
-USERID=$(id -u)
+DATE$(date +%F)
+SCRIPT_NAME=$0
+LOGFILE=/tmp/$SCRIPT_NAME-$DATE.log
 
 VALIDATE(){
     #$1---> it will receive the argument1
-
 if [ $1 -ne 0 ]
 then
     echo "$2..... is FAILURE"
@@ -16,6 +17,8 @@ else
 fi
 }
 
+USERID=$(id -u)
+
 if [ $USERID -ne 0 ]
 then
     echo "ERROR : Please run this script with root user"
@@ -24,9 +27,9 @@ then
 fi
 
 # it is our responsibility again to check installin is success or not
-yum install mysql -y 
+yum install mysql -y &>>&LOGFILE
 VALIDATE $? "Installing MySQL"
 
 
-yum install postfix -y
+yum install postfix -y &>>&LOGFILE
 VALIDATE $? "Installing postfix"
