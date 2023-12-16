@@ -10,18 +10,18 @@ LOGFILE=/tmp/$SCRIPT_NAME-$DATE.log
 
 VALIDATE(){
 #?1 will receive teh argument1
+# This function should validate the previous command and inform user it is success or failure.
 
-if [ $? -ne 0 ]
+if [ $1 -ne 0 ]
 then
-    echo " $2...... is error"
+    echo " $2...... is FAILURE"
     exit 1
 else    
-    echo " $2....... is success"
+    echo " $2....... is SUCCESS"
 fi
 }
 
 USERID=$(id -u)
-# This function should validate the previous command and inform user it is success or failure.
 
 
 if [ $USERID -ne 0 ]
