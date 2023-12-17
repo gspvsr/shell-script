@@ -2,7 +2,7 @@
 
 #Our program goal is to be install
 
-DATE$(date +%F)
+DATE=$(date +%F)
 SCRIPT_NAME=$0
 LOGFILE=/tmp/$SCRIPT_NAME-$DATE.log
 
@@ -27,9 +27,9 @@ then
 fi
 
 # it is our responsibility again to check installin is success or not
-yum install mysql -y &>>&LOGFILE
+yum install mysql -y &>>$LOGFILE
 VALIDATE $? "Installing MySQL"
 
 
-yum install postfix -y &>>&LOGFILE
+yum install postfix -y &>>$LOGFILE
 VALIDATE $? "Installing postfix"
