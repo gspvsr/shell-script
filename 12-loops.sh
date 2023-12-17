@@ -10,7 +10,6 @@ Y="\e[33m"
 G="\e[32m"
 
 USERID=$(id -u)
-
 if [ $USERID -ne 0 ]
 then
     echo -e " $R ERROR:: Please run script with root access $N "
@@ -26,20 +25,18 @@ VALIDATE(){
         echo -e "Installing $2 ... $G SUCCESS $N"
     fi
 }
-
+    
 #all args are in $@
-
 for i in $@
 do 
     yum list installed $i &>>$LOGFILE
     if [ $i -ne 0 ]
     then
-        echo "$i is not installed, let's install it"
+        echo "$i is not installed, lets install it"
         yum install $i -y &>>$LOGFILE
         vALIDATE $? "$i"
     else
         echo -e "$Y $i is already installed $N"
     fi
-
     #yum install $i -y
 done
