@@ -21,7 +21,7 @@ VALIDATE(){
     then    
         echo -e "$R "Installing $2 ... $R FAILURE $N"
         exit 1
-    elose
+    else
         echo -e "Installing $2 ... $G SUCCESS $N"
     fi
 }
