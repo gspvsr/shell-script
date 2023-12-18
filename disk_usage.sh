@@ -19,16 +19,17 @@ DISK_USAGE=$(df -hT | grep -vE 'tmpfs|Filelsystem')
 DISK_USAGE_THRESHOLD=1
 
 #IFS=means Internal field seperator is space.
-while IFS= read -r line
+while IFS= read line
 do
-    # this command will give you usage in number format for comparison
-    usage=$(echo "$line" | awk '{print $6}' | tr -d '%')  # Remove percentage sign
-    # this command will give us partition
-    partition=$(echo "$line" | awk '{print $1}')
-    # now need to check whether it is more than threshold or not
-    if [ "$usage" -gt "$DISK_USAGE_THRESHOLD" ] 2>/dev/null; then  # Ensure $usage is treated as an integer
-        message+="HIGH DISK USAGE ON $partition: $usage"$'\n'
+    #this command will give you usage in number format for comparision
+    usage=$(echo $line | awk '{print $6}' | cut -d % -f1)
+    #this command will give us partition
+    partition=$(echo $line | awk '{print $1}')
+    #now need to check wheather it is more than threshold or not
+    if [ $usage -gt $DISK_USAGE_THRESHOLD ];
+    then
+        message+="HIGH DISK USAGE ON $partition: $usage"
     fi
-done <<< "$DISK_USAGE"
+done <<< $DISK_USAGE
 
-echo -e "message: $message"
+echo "message: $message"
