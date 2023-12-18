@@ -15,8 +15,8 @@ N="\e[0m"
 Y="\e[33m"
 G="\e[32m"
 
-DISK_USAGE=$(df -hT | grep -vE 'tmpfs|Filelsystem')ss
-DISK_USAGE_THRESHOLD=1
+DISK_USAGE=$(df -hT | grep -vE 'tmpfs|Filelsystem')
+DISK_USAGE_THRESHOLD=0
 message=""
 
 #IFS=means Internal field seperator is space.
