@@ -9,7 +9,7 @@ LOGFILE=DIRECTORY=/tmp
 DATE=$(date +F:%H:%M:%S)
 SCRIPT_NAME=$0
 LOGFILE=$LOGFILE_DIRECTORY/$SCRIPT_NAME-$DATE.log
-message=
+
 
 R="\e[31m"
 N="\e[0m"
@@ -18,6 +18,7 @@ G="\e[32m"
 
 DISK_USAGE=$(df -hT | grep -vE 'tmpfs|Filelsystem')
 DISK_USAGE_THRESHOLD=1
+message=
 
 #IFS=means Internal field seperator is space.
 while IFS= read line
