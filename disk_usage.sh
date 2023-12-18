@@ -10,15 +10,14 @@ DATE=$(date +F:%H:%M:%S)
 SCRIPT_NAME=$0
 LOGFILE=$LOGFILE_DIRECTORY/$SCRIPT_NAME-$DATE.log
 
-
 R="\e[31m"
 N="\e[0m"
 Y="\e[33m"
 G="\e[32m"
 
-DISK_USAGE=$(df -hT | grep -vE 'tmpfs|Filelsystem')
+DISK_USAGE=$(df -hT | grep -vE 'tmpfs|Filelsystem')ss
 DISK_USAGE_THRESHOLD=1
-message=
+message=""
 
 #IFS=means Internal field seperator is space.
 while IFS= read line
@@ -30,7 +29,7 @@ do
    
     if [[ $usage -gt $DISK_USAGE_THRESHOLD ]];
     then
-        message+="HIGH DISK USAGE ON $partition: $usage \n"
+        message+="HIGH DISK USAGE on $partition: $usage \n"
     fi
 done <<< $DISK_USAGE
 
