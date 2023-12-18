@@ -9,6 +9,7 @@ LOGFILE=DIRECTORY=/tmp
 DATE=$(date +F:%H:%M:%S)
 SCRIPT_NAME=$0
 LOGFILE=$LOGFILE_DIRECTORY/$SCRIPT_NAME-$DATE.log
+message=
 
 R="\e[31m"
 N="\e[0m"
@@ -25,7 +26,7 @@ do
     usage=$(echo $line | awk '{print $6}' | cut -d % -f1)
     #this command will give us partition
     partition=$(echo $line | awk '{print $1}')
-    #now need to check wheather it is more than threshold or not
+   
     if [ $usage -gt $DISK_USAGE_THRESHOLD ];
     then
         message+="HIGH DISK USAGE ON $partition: $usage"
