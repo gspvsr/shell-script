@@ -17,7 +17,7 @@ G="\e[32m"
 
 DISK_USAGE=$(df -hT | grep -vE 'tmpfs|Filelsystem')
 DISK_USAGE_THRESHOLD=0
-
+message=""
 
 #IFS=means Internal field seperator is space.
 while IFS= read line
@@ -29,7 +29,7 @@ do
    
     if [[ $usage -gt $DISK_USAGE_THRESHOLD ]];
     then
-        message+="HIGH DISK USAGE on $partition: $usage \n"
+        message+="HIGH DISK USAGE on $partition: $usage\n"
     fi
 done <<< $DISK_USAGE
 
